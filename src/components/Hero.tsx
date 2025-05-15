@@ -1,29 +1,42 @@
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
+import { openChatDialog } from "@/components/ChatDialog";
 
 const Hero = () => {
   return (
-    <section className="pt-24 pb-12 md:pt-32 md:pb-20">
+    <section className="pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden">
+      {/* Background elements */}
+      <div className="absolute -z-10 top-1/4 left-1/4 w-1/2 h-1/2 bg-brand-blue/10 rounded-full blur-[100px]"></div>
+      <div className="absolute -z-10 bottom-0 right-1/4 w-1/3 h-1/3 bg-brand-purple/10 rounded-full blur-[80px]"></div>
+      
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row items-center">
           <div className="md:w-1/2 md:pr-10">
             <div className="animate-fade-in">
-              <span className="inline-block px-3 py-1 text-sm font-medium text-brand-purple bg-purple-50 rounded-full mb-5">
-                Inovação para Empresas
+              <span className="inline-block px-3 py-1 text-sm font-medium text-brand-purple bg-brand-purple/10 rounded-full mb-5">
+                Meet Your AI SDR Assistant
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 bg-gradient-to-r from-brand-blue via-brand-purple to-brand-lightblue text-transparent bg-clip-text">
-                Transforme sua empresa com automação inteligente
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gradient">
+                Transform Your Sales with Nora
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 mb-8">
-                Soluções de automação baseadas em Inteligência Artificial para otimizar processos, reduzir custos e aumentar a produtividade do seu negócio.
+              <p className="text-lg md:text-xl text-gray-400 mb-8">
+                Nora is an AI-powered SDR that engages prospects, qualifies leads, and books meetings for your sales team 24/7.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" className="bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-6">
-                  Agendar Demonstração
+                <Button 
+                  size="lg" 
+                  className="bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-6"
+                  onClick={() => openChatDialog()}
+                >
+                  Try Nora Now
                 </Button>
-                <Button size="lg" variant="outline" className="border-brand-purple text-brand-purple hover:bg-brand-purple/5 px-8 py-6">
-                  Conhecer Soluções
+                <Button 
+                  size="lg" 
+                  variant="outline" 
+                  className="border-white/20 text-white hover:bg-white/5 px-8 py-6"
+                >
+                  Watch Demo
                 </Button>
               </div>
             </div>
@@ -31,20 +44,19 @@ const Hero = () => {
           
           <div className="md:w-1/2 mt-12 md:mt-0">
             <div className="relative">
-              <div className="absolute -z-10 top-1/3 left-1/3 w-2/3 h-2/3 bg-brand-blue/20 rounded-full blur-3xl"></div>
-              <div className="absolute -z-10 bottom-1/3 right-1/3 w-1/2 h-1/2 bg-brand-purple/20 rounded-full blur-3xl"></div>
-              <div className="w-full h-full relative">
-                <div className="animate-float rounded-2xl bg-white shadow-xl border border-gray-100 p-6 relative z-10">
-                  <div className="w-full aspect-video bg-gradient-to-br from-gray-100 to-gray-50 rounded-lg flex items-center justify-center">
-                    <div className="text-center">
-                      <div className="w-16 h-16 bg-brand-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <div className="w-8 h-8 bg-brand-blue rounded-full"></div>
-                      </div>
-                      <p className="text-gray-500 text-sm">Demonstração Interativa</p>
+              <div className="glass-morphism rounded-2xl p-6 relative z-10 animate-float">
+                <div className="w-full aspect-video rounded-lg flex items-center justify-center overflow-hidden relative">
+                  <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-purple/20"></div>
+                  <div className="relative z-10 flex items-center justify-center">
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple flex items-center justify-center">
+                      <span className="text-white font-bold text-2xl">N</span>
                     </div>
                   </div>
                 </div>
-                <div className="absolute -bottom-4 -right-4 w-2/3 h-24 bg-gradient-to-br from-brand-purple to-brand-blue rounded-xl blur-md opacity-30 -z-10"></div>
+                <div className="mt-4 text-center">
+                  <h3 className="text-xl font-semibold text-white">Nora AI</h3>
+                  <p className="text-sm text-gray-400">Your 24/7 Sales Development Representative</p>
+                </div>
               </div>
             </div>
           </div>

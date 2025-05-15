@@ -1,25 +1,25 @@
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
-import Services from "@/components/Services";
-import Benefits from "@/components/Benefits";
-import About from "@/components/About";
+import Features from "@/components/Features";
+import ChatExample from "@/components/ChatExample";
 import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
+import ChatDialog from "@/components/ChatDialog";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-black text-white">
       <Header />
       <main>
         <Hero />
-        <Services />
-        <Benefits />
-        <About />
+        <Features />
+        <ChatExample />
         <Cta />
       </main>
       <Footer />
+      <ChatDialog />
     </div>
   );
 };
