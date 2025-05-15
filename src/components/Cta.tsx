@@ -18,18 +18,15 @@ const Cta = () => {
             <div className="relative z-10 text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-gradient">Pronto para revolucionar seu processo de vendas?</h2>
               <p className="text-white/90 text-xl mb-8 max-w-2xl mx-auto">
-                Converse com um especialista hoje mesmo e descubra como a Nora pode ajudar sua equipe de vendas a alcançar resultados extraordinários.
+                Converse com um especialista hoje mesmo e descubra como a NORA™ pode ajudar sua equipe de vendas a alcançar resultados extraordinários.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <div className="flex justify-center">
                 <Button 
                   size="lg" 
                   className="bg-white text-black hover:bg-white/90 px-8 py-6"
                   onClick={() => openChatDialog()}
                 >
                   Falar com Especialista
-                </Button>
-                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 px-8 py-6">
-                  Ver Demonstração
                 </Button>
               </div>
             </div>

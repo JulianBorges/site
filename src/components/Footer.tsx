@@ -8,10 +8,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <a href="/" className="inline-block mb-6">
-              <span className="text-2xl font-bold text-gradient-primary">Nora AI</span>
+              <span className="text-2xl font-bold text-gradient-primary">Doptos</span>
             </a>
             <p className="text-gray-400 mb-6 max-w-md">
-              Transformando equipes de vendas com inteligência artificial avançada. Nora é a SDR virtual que nunca dorme.
+              Transformando equipes de vendas com inteligência artificial avançada. NORA™ é a SDR virtual que nunca dorme.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -38,7 +38,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-6 text-white">Contato</h3>
             <ul className="space-y-4 text-gray-400">
-              <li>contato@nora-ai.com</li>
+              <li>contato@doptos.com</li>
               <li>+55 (11) 9999-9999</li>
               <li>Av. Paulista, 1000 - São Paulo, SP</li>
             </ul>
@@ -47,7 +47,7 @@ const Footer = () => {
         
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-500 text-sm">
-            © 2025 Nora AI. Todos os direitos reservados.
+            © 2025 Doptos. Todos os direitos reservados. NORA™ é uma marca registrada.
           </p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-gray-500 hover:text-gray-300 text-sm">Política de Privacidade</a>

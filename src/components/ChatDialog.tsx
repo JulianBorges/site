@@ -8,12 +8,13 @@ type Message = {
   id: string;
   content: string;
   sender: 'user' | 'bot';
+  isTyping?: boolean;
 };
 
 const initialMessages: Message[] = [
   {
     id: '1',
-    content: "Hi there! 👋 I'm Nora, your AI sales assistant. How can I help you today?",
+    content: "Olá! 👋 Eu sou NORA™, sua assistente de vendas com IA. Como posso ajudar você hoje?",
     sender: 'bot'
   }
 ];
@@ -65,23 +66,35 @@ const ChatDialog = () => {
       setMessages(prev => [...prev, userMessage]);
       setInput('');
       
-      // Simulate bot response after a delay
+      // Show typing indicator
       setTimeout(() => {
-        const responseOptions = [
-          "Thanks for your message! I'd be happy to connect you with one of our specialists. Can I get your name and company?",
-          "Great question! Our AI solution can automate up to 70% of your outreach tasks. Would you like to see a quick demo?",
-          "I understand your challenges. Many companies like yours have seen a 40% increase in meetings booked after implementing our solution. How many SDRs do you currently have on your team?",
-          "I'd love to help with that. Could you tell me a bit more about your current sales process so I can tailor my recommendations?"
-        ];
-        
-        const botMessage: Message = {
-          id: Date.now().toString(),
-          content: responseOptions[Math.floor(Math.random() * responseOptions.length)],
-          sender: 'bot'
+        const typingMessage: Message = {
+          id: 'typing',
+          content: '...',
+          sender: 'bot',
+          isTyping: true
         };
         
-        setMessages(prev => [...prev, botMessage]);
-      }, 1000);
+        setMessages(prev => [...prev, typingMessage]);
+        
+        // Simulate bot response after a delay
+        setTimeout(() => {
+          const responseOptions = [
+            "Obrigada pela sua mensagem! Ficarei feliz em conectá-lo com um de nossos especialistas. Posso saber seu nome e empresa?",
+            "Ótima pergunta! Nossa solução de IA pode automatizar até 70% das suas tarefas de prospecção. Gostaria de ver uma demonstração rápida?",
+            "Entendo seus desafios. Muitas empresas como a sua viram um aumento de 40% nas reuniões agendadas após implementar nossa solução. Quantos SDRs você tem atualmente em sua equipe?",
+            "Adoraria ajudar com isso. Poderia me contar um pouco mais sobre seu processo de vendas atual para que eu possa personalizar minhas recomendações?"
+          ];
+          
+          const botMessage: Message = {
+            id: Date.now().toString(),
+            content: responseOptions[Math.floor(Math.random() * responseOptions.length)],
+            sender: 'bot'
+          };
+          
+          setMessages(prev => prev.filter(msg => msg.id !== 'typing').concat(botMessage));
+        }, 1500);
+      }, 500);
     }
   };
 
@@ -95,8 +108,8 @@ const ChatDialog = () => {
               <span className="text-white font-bold text-sm">N</span>
             </div>
             <div>
-              <h3 className="font-semibold text-white">Nora AI</h3>
-              <p className="text-xs text-gray-400">AI Sales Assistant</p>
+              <h3 className="font-semibold text-white">NORA™ IA</h3>
+              <p className="text-xs text-gray-400">Assistente de Vendas IA</p>
             </div>
             <div className="ml-auto flex items-center">
               <div className="h-2 w-2 rounded-full bg-green-500 mr-2"></div>
@@ -124,10 +137,20 @@ const ChatDialog = () => {
                         <div className="w-6 h-6 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple flex items-center justify-center mr-2">
                           <span className="text-white text-xs font-bold">N</span>
                         </div>
-                        <span className="text-xs font-medium text-brand-blue">Nora AI</span>
+                        <span className="text-xs font-medium text-brand-blue">NORA™ IA</span>
                       </div>
                     )}
-                    <p className="text-sm">{msg.content}</p>
+                    <p className="text-sm">
+                      {msg.isTyping ? (
+                        <span className="inline-flex">
+                          <span className="animate-pulse">.</span>
+                          <span className="animate-pulse delay-100">.</span>
+                          <span className="animate-pulse delay-200">.</span>
+                        </span>
+                      ) : (
+                        msg.content
+                      )}
+                    </p>
                   </div>
                 </div>
               ))}
@@ -141,7 +164,7 @@ const ChatDialog = () => {
               <input
                 type="text"
                 className="flex-1 bg-white/5 border border-white/10 rounded-l-md px-4 py-2 text-white focus:outline-none focus:ring-1 focus:ring-brand-blue"
-                placeholder="Type your message..."
+                placeholder="Digite sua mensagem..."
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={(e) => {

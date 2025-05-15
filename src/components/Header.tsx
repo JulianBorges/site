@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
+import { openChatDialog } from "@/components/ChatDialog";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,16 +17,21 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
             <a href="/" className="flex items-center">
-              <span className="text-2xl font-bold text-gradient-primary">Nora AI</span>
+              <span className="text-2xl font-bold text-gradient-primary">Doptos</span>
             </a>
           </div>
           
           {/* Desktop navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#features" className="text-gray-400 hover:text-white transition-colors">Features</a>
-            <a href="#demo" className="text-gray-400 hover:text-white transition-colors">Demo</a>
-            <a href="#about" className="text-gray-400 hover:text-white transition-colors">About</a>
-            <Button className="bg-brand-blue hover:bg-brand-blue/90">Talk to Specialist</Button>
+            <a href="#features" className="text-gray-400 hover:text-white transition-colors">Recursos</a>
+            <a href="#demo" className="text-gray-400 hover:text-white transition-colors">Demonstração</a>
+            <a href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre</a>
+            <Button 
+              className="bg-brand-blue hover:bg-brand-blue/90"
+              onClick={() => openChatDialog()}
+            >
+              Testar Grátis Agora
+            </Button>
           </nav>
           
           {/* Mobile menu button */}
@@ -44,11 +50,16 @@ const Header = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-black/95 border-t border-white/10">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#features" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>Features</a>
-            <a href="#demo" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>Demo</a>
-            <a href="#about" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>About</a>
+            <a href="#features" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>Recursos</a>
+            <a href="#demo" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>Demonstração</a>
+            <a href="#about" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>Sobre</a>
             <div className="pt-2">
-              <Button className="w-full bg-brand-blue hover:bg-brand-blue/90">Talk to Specialist</Button>
+              <Button 
+                className="w-full bg-brand-blue hover:bg-brand-blue/90"
+                onClick={() => openChatDialog()}
+              >
+                Testar Grátis Agora
+              </Button>
             </div>
           </div>
         </div>

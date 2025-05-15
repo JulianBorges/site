@@ -6,7 +6,7 @@ const features = [
   {
     icon: <MessageCircle className="h-8 w-8 text-white" />,
     title: "Conversas Naturais",
-    description: "Nora utiliza IA avançada para conduzir conversas naturais e personalizadas com seus potenciais clientes."
+    description: "NORA™ utiliza IA avançada para conduzir conversas naturais e personalizadas com seus potenciais clientes."
   },
   {
     icon: <Clock className="h-8 w-8 text-white" />,
@@ -33,7 +33,7 @@ const Features = () => {
           <span className="inline-block px-3 py-1 text-sm font-medium text-brand-purple bg-brand-purple/10 rounded-full mb-4">
             Recursos Poderosos
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Por que escolher a Nora?</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Por que escolher a NORA™?</h2>
           <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Uma assistente de vendas impulsionada por IA que transforma sua abordagem de prospecção
           </p>

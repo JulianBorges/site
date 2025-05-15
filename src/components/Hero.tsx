@@ -15,13 +15,13 @@ const Hero = () => {
           <div className="md:w-1/2 md:pr-10">
             <div className="animate-fade-in">
               <span className="inline-block px-3 py-1 text-sm font-medium text-brand-purple bg-brand-purple/10 rounded-full mb-5">
-                Meet Your AI SDR Assistant
+                Conheça sua Assistente SDR com IA
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gradient">
-                Transform Your Sales with Nora
+                Transforme suas Vendas com NORA™
               </h1>
               <p className="text-lg md:text-xl text-gray-400 mb-8">
-                Nora is an AI-powered SDR that engages prospects, qualifies leads, and books meetings for your sales team 24/7.
+                NORA™ é uma SDR impulsionada por IA que engaja clientes em potencial, qualifica leads e agenda reuniões para sua equipe de vendas 24 horas por dia, 7 dias por semana.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
@@ -29,14 +29,14 @@ const Hero = () => {
                   className="bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-6"
                   onClick={() => openChatDialog()}
                 >
-                  Try Nora Now
+                  Experimente NORA™ Agora
                 </Button>
                 <Button 
                   size="lg" 
                   variant="outline" 
                   className="border-white/20 text-white hover:bg-white/5 px-8 py-6"
                 >
-                  Watch Demo
+                  Assistir Demonstração
                 </Button>
               </div>
             </div>
@@ -54,8 +54,8 @@ const Hero = () => {
                   </div>
                 </div>
                 <div className="mt-4 text-center">
-                  <h3 className="text-xl font-semibold text-white">Nora AI</h3>
-                  <p className="text-sm text-gray-400">Your 24/7 Sales Development Representative</p>
+                  <h3 className="text-xl font-semibold text-white">NORA™ IA</h3>
+                  <p className="text-sm text-gray-400">Sua Representante de Desenvolvimento de Vendas 24/7</p>
                 </div>
               </div>
             </div>
