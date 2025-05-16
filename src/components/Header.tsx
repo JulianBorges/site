@@ -27,7 +27,7 @@ const Header = () => {
             <a href="#demo" className="text-gray-400 hover:text-white transition-colors">Demonstração</a>
             <a href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre</a>
             <Button 
-              className="bg-brand-blue hover:bg-brand-blue/90"
+              className="bg-brand-purple hover:bg-brand-purple/90"
               onClick={() => openChatDialog()}
             >
               Testar Grátis Agora
@@ -38,7 +38,7 @@ const Header = () => {
           <div className="md:hidden">
             <button 
               onClick={toggleMenu}
-              className="flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white focus:outline-none"
+              className="flex items-center justify-center p-2 rounded-md text-brand-purple hover:text-white focus:outline-none"
             >
               {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
@@ -55,7 +55,7 @@ const Header = () => {
             <a href="#about" className="block py-2 px-3 text-gray-400 hover:text-white hover:bg-white/5 rounded-md" onClick={toggleMenu}>Sobre</a>
             <div className="pt-2">
               <Button 
-                className="w-full bg-brand-blue hover:bg-brand-blue/90"
+                className="w-full bg-brand-purple hover:bg-brand-purple/90"
                 onClick={() => openChatDialog()}
               >
                 Testar Grátis Agora

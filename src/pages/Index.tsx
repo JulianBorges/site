@@ -14,8 +14,11 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
+        <div className="py-8"></div> {/* Added spacing */}
         <Features />
+        <div className="py-6"></div> {/* Added spacing */}
         <ChatExample />
+        <div className="py-6"></div> {/* Added spacing */}
         <Cta />
       </main>
       <Footer />

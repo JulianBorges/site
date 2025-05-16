@@ -5,14 +5,14 @@ import { openChatDialog } from "./ChatDialog";
 
 const Cta = () => {
   return (
-    <section id="contact" className="py-20">
+    <section id="contact" className="py-24">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto glass-morphism rounded-2xl overflow-hidden">
           <div className="relative p-12 text-white">
             {/* Abstract shapes */}
             <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
               <div className="absolute -top-1/4 -right-1/4 w-1/2 h-1/2 bg-brand-blue/10 rounded-full blur-2xl"></div>
-              <div className="absolute -bottom-1/4 -left-1/4 w-3/4 h-3/4 bg-brand-purple/10 rounded-full blur-3xl"></div>
+              <div className="absolute -bottom-1/4 -left-1/4 w-3/4 h-3/4 bg-brand-purple/20 rounded-full blur-3xl"></div>
             </div>
             
             <div className="relative z-10 text-center">
@@ -23,7 +23,7 @@ const Cta = () => {
               <div className="flex justify-center">
                 <Button 
                   size="lg" 
-                  className="bg-white text-black hover:bg-white/90 px-8 py-6"
+                  className="bg-brand-purple text-white hover:bg-brand-purple/90 px-8 py-6"
                   onClick={() => openChatDialog()}
                 >
                   Falar com Especialista

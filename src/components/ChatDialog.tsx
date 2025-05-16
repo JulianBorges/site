@@ -11,14 +11,6 @@ type Message = {
   isTyping?: boolean;
 };
 
-const initialMessages: Message[] = [
-  {
-    id: '1',
-    content: "Olá! 👋 Eu sou NORA™, sua assistente de vendas com IA. Como posso ajudar você hoje?",
-    sender: 'bot'
-  }
-];
-
 // Create a store for the dialog state
 let isOpen = false;
 let setIsOpenCallback: ((open: boolean) => void) | null = null;
@@ -35,10 +27,50 @@ export const closeChatDialog = () => {
   }
 };
 
+const conversationFlow = [
+  {
+    sender: 'bot',
+    content: "Olá! 👋 Eu sou NORA™, sua assistente de vendas com IA. Como posso ajudar você hoje?"
+  },
+  {
+    sender: 'user',
+    content: "Oi NORA! Estou interessado em saber como posso melhorar as conversões de vendas da minha equipe."
+  },
+  {
+    sender: 'bot',
+    content: "Ótimo! Está pronto para revolucionar suas vendas? Nossa plataforma automatiza a qualificação de leads e aumenta a taxa de conversão em até 40%. Qual o tamanho da sua equipe de vendas atualmente?"
+  },
+  {
+    sender: 'user',
+    content: "Temos uma equipe de 5 vendedores, mas estamos com dificuldades em acompanhar todos os leads que recebemos."
+  },
+  {
+    sender: 'bot',
+    content: "Esse é um desafio comum! A NORA™ pode gerenciar milhares de conversas simultâneas, qualificando leads 24/7 para que sua equipe foque apenas nos mais promissores. Gostaria de ver uma demonstração personalizada para o seu caso?"
+  },
+  {
+    sender: 'user',
+    content: "Sim, isso seria muito útil. Quando podemos agendar?"
+  },
+  {
+    sender: 'bot',
+    content: "Perfeito! Temos disponibilidade para esta semana. Que tal quinta-feira às 14h? Posso conectar você com um especialista que vai personalizar a demonstração para as necessidades específicas da sua equipe."
+  },
+  {
+    sender: 'user',
+    content: "Quinta às 14h funciona bem para mim. Vou reunir a equipe para participar."
+  },
+  {
+    sender: 'bot',
+    content: "Excelente! Agendei a demonstração para quinta-feira às 14h. Você receberá um email de confirmação com o link da reunião. Há algo específico que gostaria que abordássemos durante a demonstração?"
+  }
+];
+
 const ChatDialog = () => {
   const [open, setOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
+  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Register the callback for external control
@@ -53,6 +85,61 @@ const ChatDialog = () => {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
+
+  // Effect for auto conversation flow
+  useEffect(() => {
+    if (open && messages.length === 0) {
+      // Start conversation with first message
+      const initialMessage = {
+        id: '1',
+        content: conversationFlow[0].content,
+        sender: conversationFlow[0].sender as 'bot' | 'user'
+      };
+      setMessages([initialMessage]);
+      setCurrentMessageIndex(1);
+    }
+  }, [open]);
+
+  // Continue conversation flow
+  useEffect(() => {
+    if (currentMessageIndex > 0 && currentMessageIndex < conversationFlow.length) {
+      const typingTimeout = setTimeout(() => {
+        // Show typing indicator
+        const nextSender = conversationFlow[currentMessageIndex].sender;
+        
+        const typingMessage: Message = {
+          id: `typing-${currentMessageIndex}`,
+          content: '...',
+          sender: nextSender as 'bot' | 'user',
+          isTyping: true
+        };
+        
+        setMessages(prev => [...prev, typingMessage]);
+        
+        // Show actual message after typing delay
+        setTimeout(() => {
+          const nextMessage: Message = {
+            id: Date.now().toString(),
+            content: conversationFlow[currentMessageIndex].content,
+            sender: nextSender as 'bot' | 'user'
+          };
+          
+          setMessages(prev => prev.filter(msg => msg.id !== `typing-${currentMessageIndex}`).concat(nextMessage));
+          
+          // Proceed to next message
+          setCurrentMessageIndex(prev => {
+            // Loop back to the start if we're at the end
+            if (prev + 1 >= conversationFlow.length) {
+              return 0; // Reset to beginning for continuous loop
+            }
+            return prev + 1;
+          });
+        }, 1500);
+      }, 2000);
+      
+      return () => clearTimeout(typingTimeout);
+    }
+  }, [currentMessageIndex]);
 
   const handleSend = () => {
     if (input.trim()) {
@@ -81,7 +168,7 @@ const ChatDialog = () => {
         setTimeout(() => {
           const responseOptions = [
             "Obrigada pela sua mensagem! Ficarei feliz em conectá-lo com um de nossos especialistas. Posso saber seu nome e empresa?",
-            "Ótima pergunta! Nossa solução de IA pode automatizar até 70% das suas tarefas de prospecção. Gostaria de ver uma demonstração rápida?",
+            "Ótimo! Nossa solução de IA pode automatizar até 70% das suas tarefas de prospecção. Gostaria de ver uma demonstração rápida?",
             "Entendo seus desafios. Muitas empresas como a sua viram um aumento de 40% nas reuniões agendadas após implementar nossa solução. Quantos SDRs você tem atualmente em sua equipe?",
             "Adoraria ajudar com isso. Poderia me contar um pouco mais sobre seu processo de vendas atual para que eu possa personalizar minhas recomendações?"
           ];
@@ -174,7 +261,7 @@ const ChatDialog = () => {
                 }}
               />
               <Button 
-                className="rounded-l-none bg-brand-blue hover:bg-brand-blue/90"
+                className="rounded-l-none bg-brand-purple hover:bg-brand-purple/90"
                 onClick={handleSend}
               >
                 <Send size={18} />

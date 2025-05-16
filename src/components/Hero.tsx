@@ -16,7 +16,7 @@ const Hero = () => {
   }, []);
 
   return (
-    <section className="pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden">
+    <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute -z-10 top-1/4 left-1/4 w-1/2 h-1/2 bg-brand-blue/10 rounded-full blur-[100px]"></div>
       <div className="absolute -z-10 bottom-0 right-1/4 w-1/3 h-1/3 bg-brand-purple/10 rounded-full blur-[80px]"></div>
