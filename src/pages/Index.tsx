@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -14,11 +14,11 @@ const Index = () => {
       <Header />
       <main>
         <Hero />
-        <div className="py-8"></div> {/* Added spacing */}
+        <div className="py-12"></div> {/* Espaçamento ajustado */}
         <Features />
-        <div className="py-6"></div> {/* Added spacing */}
+        <div className="py-10"></div> {/* Espaçamento ajustado */}
         <ChatExample />
-        <div className="py-6"></div> {/* Added spacing */}
+        <div className="py-10"></div> {/* Espaçamento ajustado */}
         <Cta />
       </main>
       <Footer />

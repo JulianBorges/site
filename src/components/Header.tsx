@@ -38,9 +38,9 @@ const Header = () => {
           <div className="md:hidden">
             <button 
               onClick={toggleMenu}
-              className="flex items-center justify-center p-2 rounded-md text-brand-purple hover:text-white focus:outline-none"
+              className="flex items-center justify-center p-2 rounded-md text-white hover:text-white focus:outline-none"
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+              {isMenuOpen ? <X size={24} className="text-brand-purple" /> : <Menu size={24} className="text-brand-purple" />}
             </button>
           </div>
         </div>

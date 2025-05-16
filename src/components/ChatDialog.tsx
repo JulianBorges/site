@@ -27,6 +27,7 @@ export const closeChatDialog = () => {
   }
 };
 
+// Conversação pré-definida entre NORA e um humano fictício
 const conversationFlow = [
   {
     sender: 'bot',
@@ -70,7 +71,6 @@ const ChatDialog = () => {
   const [open, setOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([]);
   const [input, setInput] = useState('');
-  const [currentMessageIndex, setCurrentMessageIndex] = useState(0);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   
   // Register the callback for external control
@@ -86,60 +86,18 @@ const ChatDialog = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  // Effect for auto conversation flow
+  // Carregar a conversa completa quando o diálogo é aberto
   useEffect(() => {
     if (open && messages.length === 0) {
-      // Start conversation with first message
-      const initialMessage = {
-        id: '1',
-        content: conversationFlow[0].content,
-        sender: conversationFlow[0].sender as 'bot' | 'user'
-      };
-      setMessages([initialMessage]);
-      setCurrentMessageIndex(1);
+      // Carrega toda a conversa pré-definida
+      const formattedMessages: Message[] = conversationFlow.map((msg, index) => ({
+        id: `msg-${index}`,
+        content: msg.content,
+        sender: msg.sender as 'bot' | 'user'
+      }));
+      setMessages(formattedMessages);
     }
   }, [open]);
-
-  // Continue conversation flow
-  useEffect(() => {
-    if (currentMessageIndex > 0 && currentMessageIndex < conversationFlow.length) {
-      const typingTimeout = setTimeout(() => {
-        // Show typing indicator
-        const nextSender = conversationFlow[currentMessageIndex].sender;
-        
-        const typingMessage: Message = {
-          id: `typing-${currentMessageIndex}`,
-          content: '...',
-          sender: nextSender as 'bot' | 'user',
-          isTyping: true
-        };
-        
-        setMessages(prev => [...prev, typingMessage]);
-        
-        // Show actual message after typing delay
-        setTimeout(() => {
-          const nextMessage: Message = {
-            id: Date.now().toString(),
-            content: conversationFlow[currentMessageIndex].content,
-            sender: nextSender as 'bot' | 'user'
-          };
-          
-          setMessages(prev => prev.filter(msg => msg.id !== `typing-${currentMessageIndex}`).concat(nextMessage));
-          
-          // Proceed to next message
-          setCurrentMessageIndex(prev => {
-            // Loop back to the start if we're at the end
-            if (prev + 1 >= conversationFlow.length) {
-              return 0; // Reset to beginning for continuous loop
-            }
-            return prev + 1;
-          });
-        }, 1500);
-      }, 2000);
-      
-      return () => clearTimeout(typingTimeout);
-    }
-  }, [currentMessageIndex]);
 
   const handleSend = () => {
     if (input.trim()) {
