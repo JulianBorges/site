@@ -28,13 +28,14 @@ const Hero = () => {
               <span className="inline-block px-3 py-1 text-sm font-medium text-brand-purple bg-brand-purple/10 rounded-full mb-5">
                 Conheça sua Assistente SDR com IA
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gradient">
-                <span className="relative inline-block">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                <span className="text-white relative inline-block">
                   <span key={currentWordIndex} className="animate-fade-in">
                     {changingWords[currentWordIndex]}
                   </span>
-                </span>{" "}
-                com NORA™
+                </span>
+                <br />
+                <span className="text-white">com NORA™</span>
               </h1>
               <p className="text-lg md:text-xl text-gray-400 mb-8">
                 NORA™ é uma SDR impulsionada por IA que engaja clientes em potencial, qualifica leads e agenda reuniões para sua equipe de vendas 24 horas por dia, 7 dias por semana.
@@ -42,7 +43,7 @@ const Hero = () => {
               <div className="flex flex-col sm:flex-row gap-4">
                 <Button 
                   size="lg" 
-                  className="bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-6"
+                  className="bg-brand-purple hover:bg-brand-purple/90 text-white px-8 py-6"
                   onClick={() => openChatDialog()}
                 >
                   Testar Grátis Agora
@@ -52,22 +53,7 @@ const Hero = () => {
           </div>
           
           <div className="md:w-1/2 mt-12 md:mt-0">
-            <div className="relative">
-              <div className="glass-morphism rounded-2xl p-6 relative z-10 animate-float">
-                <div className="w-full aspect-video rounded-lg flex items-center justify-center overflow-hidden relative">
-                  <div className="absolute inset-0 bg-gradient-to-br from-brand-blue/20 to-brand-purple/20"></div>
-                  <div className="relative z-10 flex items-center justify-center">
-                    <div className="w-20 h-20 rounded-full bg-gradient-to-r from-brand-blue to-brand-purple flex items-center justify-center">
-                      <span className="text-white font-bold text-2xl">N</span>
-                    </div>
-                  </div>
-                </div>
-                <div className="mt-4 text-center">
-                  <h3 className="text-xl font-semibold text-white">NORA™ IA</h3>
-                  <p className="text-sm text-gray-400">Sua Representante de Desenvolvimento de Vendas 24/7</p>
-                </div>
-              </div>
-            </div>
+            {/* Espaço vazio onde estava a caixa flutuante */}
           </div>
         </div>
       </div>
