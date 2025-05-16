@@ -1,8 +1,7 @@
-
 import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Menu, X } from 'lucide-react';
-import { openChatDialog } from "@/components/ChatDialog";
+import { openChatDialog } from "@/utils/chatStore";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

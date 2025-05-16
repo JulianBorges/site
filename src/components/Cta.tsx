@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Button } from "@/components/ui/button";
-import { openChatDialog } from "./ChatDialog";
+import { openChatDialog } from "@/utils/chatStore";
 
 const Cta = () => {
   return (
