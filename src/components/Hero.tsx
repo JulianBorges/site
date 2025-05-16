@@ -1,9 +1,20 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import { openChatDialog } from "@/components/ChatDialog";
 
 const Hero = () => {
+  const [currentWordIndex, setCurrentWordIndex] = useState(0);
+  const changingWords = ["Atenda", "Engaje", "Qualifique", "Agende", "Venda"];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % changingWords.length);
+    }, 2000); // Change word every 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="pt-28 pb-20 md:pt-36 md:pb-28 relative overflow-hidden">
       {/* Background elements */}
@@ -18,7 +29,12 @@ const Hero = () => {
                 Conheça sua Assistente SDR com IA
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-gradient">
-                Transforme suas Vendas com NORA™
+                <span className="relative inline-block">
+                  <span key={currentWordIndex} className="animate-fade-in">
+                    {changingWords[currentWordIndex]}
+                  </span>
+                </span>{" "}
+                com NORA™
               </h1>
               <p className="text-lg md:text-xl text-gray-400 mb-8">
                 NORA™ é uma SDR impulsionada por IA que engaja clientes em potencial, qualifica leads e agenda reuniões para sua equipe de vendas 24 horas por dia, 7 dias por semana.
@@ -29,14 +45,7 @@ const Hero = () => {
                   className="bg-brand-blue hover:bg-brand-blue/90 text-white px-8 py-6"
                   onClick={() => openChatDialog()}
                 >
-                  Experimente NORA™ Agora
-                </Button>
-                <Button 
-                  size="lg" 
-                  variant="outline" 
-                  className="border-white/20 text-white hover:bg-white/5 px-8 py-6"
-                >
-                  Assistir Demonstração
+                  Testar Grátis Agora
                 </Button>
               </div>
             </div>
