@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState, useRef } from 'react';
+import React from 'react';
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -7,6 +7,7 @@ import ChatExample from "@/components/ChatExample";
 import Cta from "@/components/Cta";
 import Footer from "@/components/Footer";
 import ChatDialog from "@/components/ChatDialog";
+import FloatingButton from "@/components/FloatingButton";
 
 const Index = () => {
   return (
@@ -23,6 +24,7 @@ const Index = () => {
       </main>
       <Footer />
       <ChatDialog />
+      <FloatingButton />
     </div>
   );
 };

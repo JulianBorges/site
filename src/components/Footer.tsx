@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { Instagram, Facebook, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -7,20 +9,35 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
-            <a href="/" className="inline-block mb-6">
-              <span className="text-2xl font-bold text-gradient-primary">Doptos</span>
-            </a>
+            <Link to="/" className="inline-flex items-center mb-6">
+              <img 
+                src="/lovable-uploads/2db2624e-1691-4ad1-8bb3-06733c070981.png" 
+                alt="Doptos Logo" 
+                className="h-10 mr-2" 
+              />
+              <span className="text-2xl font-bold text-white">Doptos</span>
+            </Link>
             <p className="text-gray-400 mb-6 max-w-md">
               Transformando equipes de vendas com inteligência artificial avançada. NORA™ é a SDR virtual que nunca dorme.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <span className="sr-only">LinkedIn</span>
-                <div className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors"></div>
+                <div className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors">
+                  <Linkedin size={18} />
+                </div>
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
-                <span className="sr-only">Twitter</span>
-                <div className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors"></div>
+                <span className="sr-only">Instagram</span>
+                <div className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors">
+                  <Instagram size={18} />
+                </div>
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <span className="sr-only">Facebook</span>
+                <div className="w-8 h-8 bg-white/5 hover:bg-white/10 rounded-full flex items-center justify-center transition-colors">
+                  <Facebook size={18} />
+                </div>
               </a>
             </div>
           </div>
@@ -36,11 +53,12 @@ const Footer = () => {
           </div>
           
           <div>
-            <h3 className="text-lg font-semibold mb-6 text-white">Contato</h3>
-            <ul className="space-y-4 text-gray-400">
-              <li>contato@doptos.com</li>
-              <li>+55 (11) 9999-9999</li>
-              <li>Av. Paulista, 1000 - São Paulo, SP</li>
+            <h3 className="text-lg font-semibold mb-6 text-white">Links</h3>
+            <ul className="space-y-4">
+              <li><Link to="/blog" className="text-gray-400 hover:text-white transition-colors">Blog</Link></li>
+              <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Sobre</a></li>
+              <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contato</a></li>
+              <li><a href="#careers" className="text-gray-400 hover:text-white transition-colors">Carreiras</a></li>
             </ul>
           </div>
         </div>

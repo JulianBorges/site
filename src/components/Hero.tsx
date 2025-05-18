@@ -1,19 +1,47 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from "@/components/ui/button";
-import { openChatDialog } from "@/components/ChatDialog";
+import { openChatDialog } from "@/utils/chatStore";
 
 const Hero = () => {
+  const [displayText, setDisplayText] = useState("");
+  const [isDeleting, setIsDeleting] = useState(false);
   const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const changingWords = ["Atenda", "Engaje", "Qualifique", "Agende", "Venda"];
+  const [typingSpeed, setTypingSpeed] = useState(150);
+  
+  const words = ["Atenda", "Engaje", "Qualifique", "Agende", "Venda"];
+  const currentWord = useRef(words[0]);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prevIndex) => (prevIndex + 1) % changingWords.length);
-    }, 2000); // Change word every 2 seconds
-
-    return () => clearInterval(interval);
-  }, []);
+    const timer = setTimeout(() => {
+      // Handle typing animation
+      if (!isDeleting) {
+        if (displayText.length < currentWord.current.length) {
+          setDisplayText(currentWord.current.substring(0, displayText.length + 1));
+          setTypingSpeed(100);
+        } else {
+          // Start deleting after a pause
+          setIsDeleting(true);
+          setTypingSpeed(800); // Pause before deleting
+        }
+      } else {
+        if (displayText.length > 0) {
+          setDisplayText(currentWord.current.substring(0, displayText.length - 1));
+          setTypingSpeed(50); // Delete faster than type
+        } else {
+          setIsDeleting(false);
+          setCurrentWordIndex((prevIndex) => {
+            const nextIndex = (prevIndex + 1) % words.length;
+            currentWord.current = words[nextIndex];
+            return nextIndex;
+          });
+          setTypingSpeed(200); // Pause before typing next word
+        }
+      }
+    }, typingSpeed);
+    
+    return () => clearTimeout(timer);
+  }, [displayText, isDeleting, currentWordIndex, words]);
 
   return (
     <section className="pt-32 pb-24 md:pt-40 md:pb-32 relative overflow-hidden">
@@ -30,8 +58,9 @@ const Hero = () => {
               </span>
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
                 <span className="text-white relative inline-block">
-                  <span key={currentWordIndex} className="animate-fade-in">
-                    {changingWords[currentWordIndex]}
+                  <span className="h-[1.2em] inline-block">
+                    {displayText}
+                    <span className="animate-pulse">|</span>
                   </span>
                 </span>
                 <br />
