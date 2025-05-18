@@ -126,8 +126,52 @@ export default {
 				'fade-in': 'fade-in 0.5s ease-out',
 				'float': 'float 6s ease-in-out infinite',
 				'scale-in': 'scale-in 0.3s ease-out'
-			}
+			},
+			typography: (theme) => ({
+				DEFAULT: {
+					css: {
+						color: theme('colors.white'),
+						a: {
+							color: theme('colors.brand.blue'),
+							'&:hover': {
+								color: theme('colors.brand.lightblue'),
+							},
+						},
+						h1: {
+							color: theme('colors.white'),
+						},
+						h2: {
+							color: theme('colors.white'),
+						},
+						h3: {
+							color: theme('colors.white'),
+						},
+						h4: {
+							color: theme('colors.white'),
+						},
+						blockquote: {
+							borderLeftColor: theme('colors.brand.purple'),
+							color: theme('colors.gray.400'),
+						},
+						'ul > li::before': {
+							backgroundColor: theme('colors.brand.purple'),
+						},
+						hr: {
+							borderColor: theme('colors.white/10'),
+						},
+						strong: {
+							color: theme('colors.white'),
+						},
+						code: {
+							color: theme('colors.brand.lightblue'),
+						},
+						pre: {
+							backgroundColor: theme('colors.black/50'),
+						},
+					},
+				},
+			}),
 		}
 	},
-	plugins: [require("tailwindcss-animate")],
+	plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 } satisfies Config;
