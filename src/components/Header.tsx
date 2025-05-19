@@ -21,9 +21,8 @@ const Header = () => {
               <img 
                 src="/lovable-uploads/2db2624e-1691-4ad1-8bb3-06733c070981.png" 
                 alt="Doptos Logo" 
-                className="h-8 mr-2" 
+                className="h-8 mr-2 w-28" 
               />
-              <span className="text-2xl font-bold text-white">Doptos</span>
             </Link>
           </div>
           
