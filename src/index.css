@@ -80,6 +80,6 @@
   height:1em;
   background:currentColor;
   margin-left:2px;
-  animation:blink .8s steps(1) infinite;
+  animation:blink 1s steps(1) infinite;
 }
-@keyframes blink{50%{opacity:0}}
+@keyframes blink{100%{opacity:0}}
