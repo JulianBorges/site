@@ -13,9 +13,8 @@ const Footer = () => {
               <img 
                 src="/lovable-uploads/2db2624e-1691-4ad1-8bb3-06733c070981.png" 
                 alt="Doptos Logo" 
-                className="h-10 mr-2" 
+                className="w-44 mr-2 h-auto" 
               />
-              <span className="text-2xl font-bold text-white">Doptos</span>
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
               Transformando equipes de vendas com inteligência artificial avançada. NORA™ é a SDR virtual que nunca dorme.
