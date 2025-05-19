@@ -85,8 +85,8 @@
   width:1px;
   height:100%;                       /* pega 100 % da linha */
   background:currentColor;
-  transform:scaleX(.75);             /* afina um pouco mais */
-  animation:blink .7s steps(1) infinite;
+  transform:scaleX(.5);             /* afina um pouco mais */
+  animation:blink .1s steps(1) infinite;
   /* alinhamento perfeito */
   vertical-align:baseline;
 }
