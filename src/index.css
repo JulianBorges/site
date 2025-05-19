@@ -72,3 +72,14 @@
 .text-gradient-primary {
   @apply bg-gradient-to-br from-brand-blue via-brand-purple to-brand-lightblue bg-clip-text text-transparent;
 }
+
+.typewriter::after{
+  content:'';
+  display:inline-block;
+  width:1px;      /* 1 px = super fino */
+  height:1em;
+  background:currentColor;
+  margin-left:2px;
+  animation:blink .8s steps(1) infinite;
+}
+@keyframes blink{50%{opacity:0}}
