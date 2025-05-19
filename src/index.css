@@ -73,13 +73,23 @@
   @apply bg-gradient-to-br from-brand-blue via-brand-purple to-brand-lightblue bg-clip-text text-transparent;
 }
 
+.typewriter {
+  position: relative;                /* cria contexto pro ::after */
+}
+
 .typewriter::after{
   content:'';
-  display:inline-block;
-  width:1px;      /* 1 px = super fino */
-  height:1em;
+  position: absolute;
+  right:-2px;                        /* encosta no último caractere */
+  top:0;
+  width:1px;
+  height:100%;                       /* pega 100 % da linha */
   background:currentColor;
-  margin-left:2px;
-  animation:blink 1s steps(1) infinite;
+  transform:scaleX(.75);             /* afina um pouco mais */
+  animation:blink .7s steps(1) infinite;
+  /* alinhamento perfeito */
+  vertical-align:baseline;
 }
-@keyframes blink{100%{opacity:0}}
+
+@keyframes blink { 50% { opacity: 0; } }
+
