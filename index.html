@@ -20,12 +20,32 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" />
+
   </head>
 
   <body>
     <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
+    <!-- n8n-chat container -->
+    <div id="n8n-chat"></div>
+
+    <!-- scripts da aplicação -->
     <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
     <script type="module" src="/src/main.tsx"></script>
+
+    <!-- n8n-chat widget -->
+    <script type="module">
+      import { createChat } from
+        'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      createChat({
+        webhookUrl: 'http://localhost:5678/webhook/97d0b12e-9609-4647-8c3e-df5e83b51b5d',
+        target: '#n8n-chat',
+        mode: 'window',          // troque para 'embedded' se quiser fixo
+        showWelcomeScreen: false,
+        metadata: { source: 'doptos-site' }
+        /* headers: { 'x-chat-token': 'SEU_TOKEN' }  // se usar Header Auth */
+      });
+    </script>
   </body>
 </html>
